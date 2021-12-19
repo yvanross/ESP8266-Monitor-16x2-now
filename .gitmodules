@@ -1,0 +1,6 @@
+[submodule "lib/AbstractSensorConfig"]
+	path = lib/AbstractSensorConfig
+	url = git@github.com:yvanross/AbstractSensorConfig.git
+[submodule "lib/EmailHelper"]
+	path = lib/EmailHelper
+	url = git@github.com:yvanross/EmailHelper.git

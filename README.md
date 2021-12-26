@@ -9,4 +9,8 @@ https://github.com/frenzeldk/ESP8266-Arduino-Webconfig/blob/master/PAGE_NetworkC
 # submodule
  git submodule add <remote_url> <destination_folder>
  git submodule update --init --recursive
- git submodule update --remote --merge
+ git submodule update --remote --merge// 
+
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+     

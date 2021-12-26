@@ -10,9 +10,7 @@
 [submodule "lib/WifiHelper"]
 	path = lib/WifiHelper
 	url = git@github.com:yvanross/WifiHelper.git
-[submodule "lib/CircularBufferOfFloat"]
-	path = lib/CircularBufferOfFloat
-	url = git@github.com:yvanross/CircularBufferOfFloat.git
+
 [submodule "lib/CircularBufferOfUnsignedLong"]
 	path = lib/CircularBufferOfUnsignedLong
 	url = git@github.com:yvanross/CircularBufferOfUnsingedLong.git

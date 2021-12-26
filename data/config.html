@@ -1,0 +1,107 @@
+<!DOCTYPE HTML><html>
+<head>
+  <title>Configuration</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css" type="text/css" />
+
+   <style>
+    body {
+      min-width: 310px;
+      max-width: 800px;
+      height: 400px;
+      margin: 0 auto;
+    }
+    h2 {
+      font-family: Arial;
+      font-size: 2.5rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h2>Page de configuration</h2>
+  
+  <form action="/index" style="display:inline;">
+    <button>Page principale</button>
+  </form> 
+  <form action="/chart" style="display:inline;">
+    <button>Graphique</button>
+  </form> 
+ 
+  <form action="/reset" style="display:inline;">
+    <button>Reset</button>
+  </form>
+  
+  
+  <div id="configuration" class="container">
+    <form method="get" action="settings">
+      <p>
+        <label>Gmail account</label>
+        <input name="gmail"><span id="gmail" class="content"></span>
+      </p>
+      <p>
+        <label>Gmail password</label>
+        <input name="gmail_password"><span id="gmail_password" class="content"></span>
+      </p>
+      <p>
+        <label>Sampling rate (sec)</label>
+        <input name="sampling_rate_secondes"><span id="sampling_rate_secondes" class="content"></span>
+      </p>
+      <p>
+        <label>Sms email</label>
+        <input name="sms_address"><span id="sms_address" class="content"></span>
+      </p>
+      <p>
+        <label>SSID</label>
+        <input name="ssid"><span id="ssid" class="content"></span>
+      </p>
+      <p>
+        <label>Ssid passphrase</label>
+        <input name="ssid_passphrase"><span id="ssid_passphrase" class="content"></span>
+      </p>
+      <p>
+        <label>Can send email</label>
+        <input name="can_send_email">true/false <span id="can_send_email" class="content"></span>
+      </p>
+      <p>
+        <label>Sampling buffer size</label>
+        <input name="sampling_buffer_size"><span id="sampling_buffer_size" class="content"></span> 
+      </p>
+      <p>
+        <label>Filter size</label>
+        <input name="filter_size"><span id="filter_size" class="content"></span>
+      </p>
+      <p>
+        <label>Threshold</label>
+        <input name="threshold"> <span id="threshold" class="content"></span>
+      </p>
+      <p>
+        <label>Gain</label>
+        <input name="gain"><span id="gain" class="content"></span>
+      </p>
+      
+      <input type="submit">
+    </form>
+  </div>
+  
+</body>
+
+<script>
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      console.log(this.responseText);
+      var myArr = JSON.parse(this.responseText);
+      console.log(myArr);
+      for(key in myArr){
+        document.getElementById(key).innerText = myArr[key];
+      }
+    }
+  };
+  xhttp.open("GET", "/config_data", true);
+  xhttp.send();
+</script>
+</html>
+
+
+

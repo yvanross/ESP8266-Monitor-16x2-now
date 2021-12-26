@@ -3,8 +3,8 @@ const char HOME_page[] PROGMEM = R"=====(
   <HEAD>
       <TITLE>Erabliere graphique</TITLE>
       <meta http-equiv="refresh" content="$$refresh_rate$$">
-       <link rel="stylesheet" href="/style.css" type="text/css" />
-      <script src="/microajax.js"></script> <!
+      <link rel="stylesheet" href="./style.css" type="text/css" />
+      <script src="./microajax.min.js"</script>
   </HEAD>
 <BODY>
   

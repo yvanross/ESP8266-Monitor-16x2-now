@@ -13,3 +13,6 @@
 [submodule "lib/CircularBufferOfFloat"]
 	path = lib/CircularBufferOfFloat
 	url = git@github.com:yvanross/CircularBufferOfFloat.git
+[submodule "lib/CircularBufferOfUnsignedLong"]
+	path = lib/CircularBufferOfUnsignedLong
+	url = git@github.com:yvanross/CircularBufferOfUnsingedLong.git

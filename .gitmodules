@@ -4,13 +4,6 @@
 [submodule "lib/EmailHelper"]
 	path = lib/EmailHelper
 	url = git@github.com:yvanross/EmailHelper.git
-[submodule "lib/Lcd2"]
-	path = lib/Lcd2
-	url = git@github.com:yvanross/Lcd2.git
-[submodule "lib/WifiHelper"]
-	path = lib/WifiHelper
-	url = git@github.com:yvanross/WifiHelper.git
-
 [submodule "lib/CircularBufferOfUnsignedLong"]
 	path = lib/CircularBufferOfUnsignedLong
 	url = git@github.com:yvanross/CircularBufferOfUnsingedLong.git

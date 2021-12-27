@@ -2,7 +2,6 @@
 #define SensorConfig_h
 
 #include "Arduino.h"
-#include <ArduinoJson.h>  //https://arduinojson.org/v6/doc/
 #include <AbstractSensorConfig.h>
 
 
@@ -18,6 +17,7 @@ const String SAMPLING_BUFFER_SIZE = "sampling_buffer_size";
 const String FILTER_SIZE = "filter_size";
 const String THRESHOLD = "threshold";
 const String GAIN = "gain";
+const String USE_ANALOG = "use_analog";
 
 
 class SensorConfig :  public AbstractSensorConfig {

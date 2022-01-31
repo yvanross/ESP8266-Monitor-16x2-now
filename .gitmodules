@@ -1,9 +1,9 @@
 [submodule "lib/AbstractSensorConfig"]
 	path = lib/AbstractSensorConfig
-	url = git@github.com:yvanross/AbstractSensorConfig.git
+	url = git@github.com:yvanross/ESP-AbstractSensorConfig.git
 [submodule "lib/EmailHelper"]
 	path = lib/EmailHelper
-	url = git@github.com:yvanross/EmailHelper.git
+	url = git@github.com:yvanross/ESP-EmailHelper.git
 [submodule "lib/CircularBufferOfUnsignedLong"]
 	path = lib/CircularBufferOfUnsignedLong
-	url = git@github.com:yvanross/CircularBufferOfUnsingedLong.git
+	url = git@github.com:yvanross/ESP-CircularBufferOfUnsingedLong.git

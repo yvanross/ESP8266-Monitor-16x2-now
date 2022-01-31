@@ -1,5 +1,14 @@
 {
   "files.associations": {
-    "random": "cpp"
+    "random": "cpp",
+    "cstddef": "cpp",
+    "limits": "cpp",
+    "functional": "cpp",
+    "*.tcc": "cpp",
+    "iosfwd": "cpp",
+    "istream": "cpp",
+    "sstream": "cpp",
+    "streambuf": "cpp",
+    "regex": "cpp"
   }
 }

@@ -1,11 +1,13 @@
-#ifndef pin_h
-#define pin_h
+#ifndef Pin_h
+#define Pin_h
 
-const unsigned long LED_BLUE = D5;
-const unsigned long LED_GREEN = D6;
-const unsigned long BUTTON_CONFIG = D7;
-const unsigned long LED_WHITE = D8;
-const unsigned long ANALOG_PIN  = A0;
-const unsigned long DIGITAL_SOUD = D1
+#include <Arduino.h>
+
+const unsigned long PIN_LED_BLUE = D5;
+const unsigned long PIN_BUTTON_CONFIG = D6;
+const unsigned long PIN_TRIGGER = D2;
+const unsigned long PIN_ECHO = D1;
+
+
 
 #endif

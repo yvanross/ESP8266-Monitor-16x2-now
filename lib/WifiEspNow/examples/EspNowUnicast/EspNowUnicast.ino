@@ -39,8 +39,7 @@ printReceivedMessage(const uint8_t mac[WIFIESPNOW_ALEN], const uint8_t* buf, siz
   Serial.println();
 }
 
-void
-setup()
+void setup()
 {
   Serial.begin(115200);
   Serial.println();

@@ -1,0 +1,23 @@
+@startuml usecase
+skinparam style strictuml
+left to right direction
+
+Actor Client 
+package CapteurszRossYpro {
+(Envoyer les alarmes par courriels\nou SMS) as EMAIL
+(Envoyer les alarmes par réseau cellulaire) as GSM
+(Configurer vos capteurs) as Configure
+(Utiliser le réseau WIFI existant) as WIFI
+(Utiliser le réseau spécifique au capteurs) as ESPNOW
+}
+actor Employé as E
+
+Client --> Configure
+EMAIL --> E
+GSM --> E
+Configure --> WIFI
+Configure --> ESPNOW
+WIFI --> EMAIL
+ESPNOW --> GSM
+
+@enduml

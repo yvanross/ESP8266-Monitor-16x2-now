@@ -5,14 +5,16 @@
   <script src="highcharts.js"></script>
 </head>
 <body>
-  <h1>Realtime level measurement</h1>
-  <h2>Rossypro.com</h2>
+  <h1>RossYpro.com</h1>
+  <h2>Realtime level measurement</h2>
+<h3><span id="frequency"></span>&nbsp;secondes</h3>
   <form action="/index" style="display:inline;">
     <button>Page principale</button>
   </form> 
   <div id="chart1" class="container"></div>
-</body>
-<script>
+
+
+<script  type="text/javascript">
 var chartT = new Highcharts.Chart({
   chart:{ renderTo : 'chart1' },
   title: { text: 'Niveau de liquide' },
@@ -34,11 +36,14 @@ var chartT = new Highcharts.Chart({
   },
   credits: { enabled: false }
 });
-setInterval(function ( ) {
-  var xhttp = new XMLHttpRequest();
+
+var samplingRate = 5000;
+const localOffset = new Date().getTimezoneOffset() * 60 * 1000;
+var myFunction = function ( ) {
+var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      var x = (new Date()).getTime(),
+      var x = (new Date()).getTime() - localOffset,
           y = parseFloat(this.responseText);
       //console.log(this.responseText);
       if(chartT.series[0].data.length > 4000) {
@@ -47,12 +52,31 @@ setInterval(function ( ) {
         chartT.series[0].addPoint([x, y], true, false, true);
       }
     }
+   
   };
   xhttp.open("GET", "/level", true);
   xhttp.send();
-}, 5000 ) ;
+  setTimeout(myFunction,samplingRate);
+}
+myFunction();
 
  
+var initHttp = new XMLHttpRequest();
+initHttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      console.log("Get sampling frequency");
+      console.log(this.responseText);
+     console.log(parseInt(this.responseText));
+     samplingRate = parseInt(this.responseText);
+     console.log(samplingRate);
+     document.getElementById("frequency").innerText = samplingRate/1000;
+     setTimeout(myFunction,samplingRate);
+    }
+  };
+  initHttp.open("GET", "/sampling_frequency", true);
+  initHttp.send();
+
 
 </script>
+</body>
 </html>

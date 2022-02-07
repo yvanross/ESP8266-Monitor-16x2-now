@@ -1,23 +1,88 @@
-<!DOCTYPE HTML>
-<html lang="fr">
+<!DOCTYPE HTML><html>
 <head>
-  <title>Sound level measurement</title>
+  <title>Configuration</title>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 <body>
-  <h2>RPC Sound Level Measurement</h2>
+  <h1>RossYpro.com</h1>
+  <h2>Capteur ultrason</h2>
+
   <form action="/config" style="display:inline;">
     <button>Configuration</button>
   </form> 
   <form action="/chart" style="display:inline;">
     <button>Graphique</button>
   </form> 
-  <form action="/ping" style="display:inline;">
+  <form action="/reset" style="display:inline;">
     <button>Reset</button>
-  </form>
+  </form> 
   
   
+  <div id="container" class="container">
+  <p class="data">
+    <!--<span id="time" class="info"></span>&nbsp;
+    <span id="distance" class="info"></span>&nbsp;
+    <span id="unit" class="info"></span>&nbsp;
+    <span class="info">+/-</span>&nbsp;
+    <span id="ecart" class="info"></span>-->
+  </p>
+  </div>
+
+  <script>
+    var samplingRate = 4000;
+    var myInterval;
+    var myFunction = function () {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          var time = new Date();
+          // console.log(this.responseText);
+            let res = this.responseText.split("|");
+            let inches = res[0];
+            samplingRate = parseInt(res[1]);
+            let distance = res[2];
+            let ecart_type = res[3];
+            let tank_level = res[4];
+            let tank_percent = res[5];
+            let nb_iteration = res[6];
+          
+            let br = document.createElement("br");
+            let p = document.createElement("span");
+            p.className = "data";
+            p.append(time);
+            p.append(" distance capteur - liquide: ");
+            p.append(distance);
+            p.append(" +/- ");
+            p.append(ecart_type);
+            p.append(" hauteur liquide: ");
+            p.append(tank_level);
+            if(inches == "1")
+              p.append(" pouces");
+            else
+              p.append(" cm");
+            p.append(" remplissage: ");
+            p.append(tank_percent);
+            p.append("% nb Iteration: ");
+            p.append(nb_iteration);
+            p.appendChild(br);
+    
+            document.getElementById("container").insertBefore(p,document.getElementsByClassName("data")[0]);
+        
+        }
+      };
+      xhttp.open("GET", "/index_data", true);
+      xhttp.send();
+      setTimeout(function(){
+              myFunction();
+            }, samplingRate);
+    }
+    myFunction();
+  </script>
+
+
 </body>
+
 
 </html>

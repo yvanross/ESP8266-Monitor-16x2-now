@@ -1,0 +1,60 @@
+@startuml autonome
+control Capteur1
+control CapteurX
+card  WifiRouter
+cloud Internet
+Actor Client
+Capteur1 --> WifiRouter: Connecté à votre réseau Wifi\nEnvoye alarme par courriel
+CapteurX --> WifiRouter: Connecté à votre réseau Wifi\nEnvoye alarme par courriel
+WifiRouter -> Internet
+Internet -> Client: courriel ou SMS\nde votre capteur
+@enduml
+
+@startuml moduleAffichage
+control Capteur1
+control CapteurX
+control ModuleAffichage
+card  WifiRouter
+cloud Internet
+Actor Client
+Capteur1 -u-> WifiRouter: Envoie messages\nau module d'affichage
+CapteurX -u-> WifiRouter: Envoie messages\nau module d'affichage
+ModuleAffichage -u-> WifiRouter: recoit message des capteurs\nEnvoie alarme par courriel
+WifiRouter -> Internet
+Internet -> Client: courriel ou SMS\nde votre module d'affichage\nou d'un capteur
+@enduml
+
+@startuml moduleGSM
+control Capteur1
+control Capteur2
+control CapteurX
+control ModuleAffichage
+control ModuleGSM
+cloud ReseauCellulaire
+Actor Client
+Capteur2 "1..20" --> "1" ModuleGSM: Envoie message 
+Capteur1 -u-> ModuleAffichage: Envoie messages\nau module d'affichage
+CapteurX -u-> ModuleAffichage: Envoie messages\nau module d'affichage
+ModuleAffichage -r->  ModuleGSM: envoie des alarmes par message
+ModuleGSM --> ReseauCellulaire
+ReseauCellulaire -->Client: SMS
+@enduml
+
+@startuml Repeteur
+control Capteurs1
+control Capteurs2
+control Répéteur1
+control Répéteur2
+control "Communication\nModuleGSM ou ModuleAffichage" as Communication
+cloud "Réseau\n Wifi ou GSM" as Réseau
+control Répéteur
+actor Client
+
+Capteurs1 "1..20" --> Répéteur1
+Capteurs2 "1..20" --> Répéteur2
+Répéteur1  --> Répéteur
+Répéteur2 --> Répéteur
+Répéteur -> Communication
+Communication -> Réseau
+Réseau -> Client
+@enduml

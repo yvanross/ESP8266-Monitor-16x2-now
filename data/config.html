@@ -1,96 +1,183 @@
 <!DOCTYPE HTML><html>
 <head>
   <title>Configuration</title>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css" type="text/css" />
-
-   <style>
-    body {
-      min-width: 310px;
-      max-width: 800px;
-      height: 400px;
-      margin: 0 auto;
-    }
-    h2 {
-      font-family: Arial;
-      font-size: 2.5rem;
-      text-align: center;
-    }
-  </style>
 </head>
 <body>
-  <h2>Page de configuration</h2>
+  <h1>RossYpro.com</h1>
+  <h2>Configuration capteur ultrason</h2>
   
   <form action="/index" style="display:inline;">
-    <button>Page principale</button>
+    <button class="menu">Page principale</button>
   </form> 
   <form action="/chart" style="display:inline;">
-    <button>Graphique</button>
+    <button class="menu">Graphique</button>
   </form> 
- 
-  <form action="/reset" style="display:inline;">
-    <button>Reset</button>
+  <form action="/ota" style="display:inline;">
+    <button class="menu">Mise à jour du firmware par liaison sans fils</button>
   </form>
-  
-  
+  <br>
+  <br>
+
   <div id="configuration" class="container">
     <form method="get" action="settings">
-      <p>
-        <label>Gmail account</label>
-        <input name="gmail"><span id="gmail" class="content"></span>
-      </p>
-      <p>
-        <label>Gmail password</label>
-        <input name="gmail_password"><span id="gmail_password" class="content"></span>
-      </p>
-      <p>
-        <label>Sampling rate (sec)</label>
-        <input name="sampling_rate_secondes"><span id="sampling_rate_secondes" class="content"></span>
-      </p>
-      <p>
-        <label>Sms email</label>
-        <input name="sms_address"><span id="sms_address" class="content"></span>
-      </p>
-      <p>
-        <label>SSID</label>
-        <input name="ssid"><span id="ssid" class="content"></span>
-      </p>
-      <p>
-        <label>Ssid passphrase</label>
-        <input name="ssid_passphrase"><span id="ssid_passphrase" class="content"></span>
-      </p>
-      <p>
-        <label>Can send email</label>
-        <input name="can_send_email">true/false <span id="can_send_email" class="content"></span>
-      </p>
-      <p>
-        <label>Use analog sensor</label>
-        <input name="use_analog"><span id="use_analog" class="content"></span> true/false
-      </p>
-      <p>
-        <label>Sampling buffer size</label>
-        <input name="sampling_buffer_size"><span id="sampling_buffer_size" class="content"></span> 
-      </p>
-      <p>
-        <label>Filter size</label>
-        <input name="filter_size"><span id="filter_size" class="content"></span>
-      </p>
-      <p>
-        <label>Threshold</label>
-        <input name="threshold"> <span id="threshold" class="content"></span>
-      </p>
-      <p>
-        <label>Gain</label>
-        <input name="gain"><span id="gain" class="content"></span>
-      </p>
-      
-      <input type="submit">
-    </form>
-  </div>
-  
-</body>
+      <input type="checkbox" id="connection-wifi" class="accordeon-checkbox" />
+      <label for="connection-wifi"><input name="USE_WIFI" type="radio" value="true">Branchement du capteur à votre réseau Wifi sans fils</label>
+      <div class="content">
 
+        <div class="info">
+          Si vous n'avez pas de réseau Wifi ou si vous désirer configurer ce capteur pour qu'il communique directement avec le module d'affichage, passer à l'étape suivante: Connection directe.
+        </div>
+        
+        <label>Identifiant du réseau</label>
+        <input name="SSID" value="test" type="text">
+
+        <label>Mot de passe du réseau</label>
+        <input name="SSID_PASSPHRASE" type="text">
+      
+        <input type="checkbox" id="courriel" class="accordeon-checkbox" />
+        <label for="courriel">Envoyer les alarmes par courriel avec le réseau Wifi</label>
+        <div class="content">
+            Envoye de courriel permis<input id="can_send_email"  name="CAN_SEND_EMAIL" type="radio">
+
+            <label>Courriel de votre compte Gmail</label>
+            <input name="GMAIL" type="text">
+
+            <label>Password de votre compte Gmail</label>
+            <input name="GMAIL_PASSWORD" type="text">
+
+            <label>Courriel du destinataire</label>
+            <input name="SMS_ADDRESS" type="text">
+            
+          <input type="checkbox" id="sms" class="accordeon-checkbox" />
+          <label for="sms">Convertir le courriel destinataire pour envoyer un SMS</label>
+          <div class="content">
+            Utiliser le courriel du fournisseur de votre destinataire pour lui envoyer un SMS au lieu d'un courriel
+            <ul>
+              <li>Rogers Wireless: [10-digit phone number]@pcs.rogers.com</li>
+              <li>Fido: [10-digit phone number]@fido.ca</li>
+              <li>Telus: [10-digit phone number]@msg.telus.com</li>
+              <li>Bell Mobility: [10-digit phone number]@txt.bell.ca</li>
+              <li>Kudo Mobile: [10-digit phone number]@msg.koodomobile.com</li>
+              <li>MTS: [10-digit phone number]@text.mtsmobility.com</li>
+              <li>President’s Choice: [10-digit phone number]@txt.bell.ca</li>
+              <li>Sasktel: [10-digit phone number]@sms.sasktel.com</li>
+              <li>Solo: [10-digit phone number]@txt.bell.ca</li>
+              <li>Virgin: [10-digit phone number]@vmobile.ca</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    
+      <input type="checkbox" id="connection-directe" class="accordeon-checkbox" />
+      <label for="connection-directe"><input name="USE_WIFI" type="radio" value="false">Branchement du capteur sur son propre réseau sans fil</label>
+      <div class="content">
+        <div class="info">
+          Utiliser le réseau de connection directe sans-fils entre les capteurs sans utiliser le réseau wifi existant. Idéal si vous n'avez pas de réseau WiFi et que vous avez un module d'affichage supportant une connection cellulaire.
+        </div>
+          <label>Mac Adresse du module d'affichage</label>
+          <div class="mac_address info">
+            <input name="SMAC0" size="2" style="float:left"><span style="float:left">:</span>
+            <input name="SMAC1" size="2" style="float:left"><span style="float:left">:</span>
+            <input name="SMAC2" size="2" style="float:left"><span style="float:left">:</span>
+            <input name="SMAC3" size="2" style="float:left"><span style="float:left">:</span>
+            <input name="SMAC4" size="2" style="float:left"><span style="float:left">:</span>
+            <input name="SMAC5" size="2" style="float:left">
+          </div>
+          <!-- <input name="xxx" type="texte"> -->
+      </div>
+
+      <input type="checkbox" id="capteur" class="accordeon-checkbox" />
+      <label for="capteur">Information sur votre capteur</label>
+      <div class="content">
+          <label>Nom de votre capteur</label>
+          <input name="SENSOR_NAME" type="text">
+
+        <input type="checkbox" id="capteur-configuration" class="accordeon-checkbox" />
+        <label for="capteur-configuration">Paramètres de fonctionnement</label>
+        <div class="content">
+          Attention: Les paramètres ci-dessous peuvent affecter le fonctionnement du capteur. Assurez-vous de maitriser les concepts de chaque paramètre avant de changer ceux-ci.
+
+            <label>Fréquence de prise de mesure (secondes)</label>
+            <input name="SAMPLING_RATE_SECONDES" type="number" min="1" >
+          
+            <label>Nombre d'échantillons</label>
+            <input name="SAMPLING_BUFFER_SIZE" type="number" min="1" >
+          
+            <label>Delais entre les mesures de chaque échantillon (millisecondes)</label>
+            <input name="DELAY_INTER_MEASURE" type="number" min="10" >
+
+            <label>Déviation maximal acceptable entre les mesures d'échantillon. Suggestion: 1cm ou 0.25 pouce</label>
+            <input name="STD_DEV_MAX" type="number" min="0" max="5" step="0.01">
+
+            <label>Nombre de tentatives si la déviation maximale est dépassée</label>
+            <input name="NB_RETRY" type="number" min="1">
+        </div>
+      </div>
+      
+      <input type="checkbox" id="tank" class="accordeon-checkbox" />
+      <label for="tank">Paramétrisation du réservoir&nbsp;&nbsp;
+        <input name="INCHES" type="radio" value="true"> Pouces
+        <input name="INCHES" type="radio" value="false"> Centimetres
+      </label>
+      <div class="content">
+          <label>Distance entre le capteur et le réservoir</label>
+          <input name="DISTANCE_BETWEEN_SENSOR_AND_TANK_BOTTOM" min="1.0" step="0.01" type="number">
+
+          <label>Hauteur du réservoir</label>
+          <input name="TANK_HEIGHT" type="number" min="1.0" step="0.01">
+      </div>
+
+
+      <input type="checkbox" id="alarme" class="accordeon-checkbox" />
+      <label for="alarme">Alarmes</label>
+      <div class="content">
+          <label>Seuils séparés par des virgules</label>
+          <input name="THRESHOLD" type="text">
+      </div>
+  
+    <input type="checkbox" id="gps-info" class="accordeon-checkbox" />
+    <label for="gps-info">Localiser votre capteur&nbsp;&nbsp;
+      <!--button class="small" onclick="getLocation()">Mettre à jour</button-->
+    </label>
+    <div class="content">
+     
+        <label>Latitude</label>
+        <input name="LATITUDE" type="number" step="0.01">
+
+        <label>Longitude</label>
+        <input name="LONGITUDE" type="number" step="0.01">
+    </div>
+  <br> 
+      <div id="flash_message"></div>
+      <input id="submit_button" type="submit">
+  </form>
+</div>
+
+<!-- https://www.codegrepper.com/code-examples/javascript/replace+form+submit+with+ajax -->
 <script>
+
+  function redirectToIndexPage(){
+      console.log("redirectToIndexPage called");
+      document.getElementById("submit_button").disabled = true;
+      document.getElementById("flash_message").innerHTML="<div class='info'>Redémarrage du capteur et redirection sur la page d'index. Soyez patient j'en ai pour quelques secondes...</div>";
+      // await new Promise(resolve => setTimeout(resolve, 5000));
+      var xhttp = new XMLHttpRequest(); 
+      xhttp.onreadystatechange = function() {
+        console.log(this.readyState);
+        console.log(this.status);
+      if (this.readyState == 4 && this.status == 0) {      
+          console.log('test_redirect done should have redirect to index page');
+          alert("coucou");
+          window.location.href="http://192.168.2.237/";
+        }
+      };
+      xhttp.open("GET", "/index", true);
+      xhttp.send();
+  }
+
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -98,13 +185,77 @@
       var myArr = JSON.parse(this.responseText);
       console.log(myArr);
       for(key in myArr){
-        document.getElementById(key).innerText = myArr[key];
+          if(document.getElementsByName(key)){
+            if(document.getElementsByName(key).length == 1){
+              document.getElementsByName(key)[0].value = myArr[key];
+              console.log(document.getElementsByName(key));
+              console.log(key," => ", myArr[key]);
+            } else {
+              if(document.getElementsByName(key)[0].value == myArr[key])
+                document.getElementsByName(key)[0].checked="checked";
+              else
+                document.getElementsByName(key)[1].checked="checked";
+
+            }
+          } else
+          console.log("Missing key in html config file: ", key);
       }
     }
   };
   xhttp.open("GET", "/config_data", true);
   xhttp.send();
+
+  var container = document.getElementsByClassName("container")[0];
+    container.onkeyup = function(e) {
+    var target = e.srcElement || e.target;
+    console.log(target);
+    var maxLength = parseInt(target.attributes["size"].value, 10);
+    var myLength = target.value.length;
+    if (myLength >= maxLength) {
+        var next = target;
+        while (next = next.nextElementSibling) {
+            if (next == null)
+                break;
+            if (next.tagName.toLowerCase() === "input") {
+                next.focus();
+                break;
+            }
+        }
+    }
+    // Move to previous field if empty (user pressed backspace)
+    else if (myLength === 0) {
+        var previous = target;
+        while (previous = previous.previousElementSibling) {
+            if (previous == null)
+                break;
+            if (previous.tagName.toLowerCase() === "input") {
+                previous.focus();
+                break;
+            }
+        }
+    }
+}
+
+var latitude = document.getElementById("latitude");
+var longitude = document.getElementById("longitude");
+function getLocation() {
+  console.log("getLocation called");
+  if (navigator.geolocation) {
+    console.log("cal navigator");
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    console.log("Geolocation is not supported by this browser.");
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  console.log(position.cords);
+  document.getElementById("latitude").value = position.coords.latitude
+  document.getElementById("longitude").value = position.coords.longitude
+}
 </script>
+</body>
 </html>
 
 

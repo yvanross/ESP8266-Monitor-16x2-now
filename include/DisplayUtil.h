@@ -1,6 +1,6 @@
 #include <Arduino.h>
 #include <FS.h>
-#include <SensorConfig.h>
+#include <DeviceConfig.h>
 #include <LittleFS.h> 
 #ifdef ESP32
   #include <WiFi.h>
@@ -21,7 +21,7 @@ void displayStaticFile(){
     Serial.printf("   %s: %d\r\n", fileName.c_str(), f.size());
   }
 }
-void displayConfigInfo(SensorConfig* config){
+void displayConfigInfo(DeviceConfig* config){
   Serial.print("ChipID: ");Serial.println(ESP.getChipId());
   Serial.print("config: ");Serial.println(config->toJson());
    Serial.print("Connect to wifi with ssid: ");

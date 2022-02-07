@@ -1,0 +1,62 @@
+<!DOCTYPE HTML><html>
+<head>
+  <title>Configuration</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+<body>
+  <h1>RossYpro.com</h1>
+  <h2>Capteur ultrason</h2>
+
+ 
+    <button id="reset">Reset</button>
+
+  <script>
+    var reset = document.getElementById("reset");
+    reset.onclick = function(e){
+      console.log("calling reset");
+      var xhttp = new XMLHttpRequest(); 
+      xhttp.onreadystatechange = function() {
+        console.log(this.readyState);
+        console.log(this.status);
+      if (this.readyState == 4 && this.status == 0) {      
+          console.log('test_redirect done should have redirect to index page');
+          window.location.href="http://192.168.2.237/";
+        }
+      };
+      xhttp.open("GET", "/reset", true);
+      xhttp.send();
+      // myFunction();
+    }
+
+    // var myFunction = function () {
+    //   var xhttp = new XMLHttpRequest();
+    //   xhttp.onreadystatechange = function() {
+    //     console.log(this.readyState);
+    //     console.log(this.status);
+    //     if (this.readyState == 4 && this.status == 200) {
+    //       console.log('test_redirect done should have redirect to index page');
+    //       window.location.href="http://192.168.2.237/";
+
+    //       } else {
+    //         console.log('wait index ...')
+    //       }
+    //   };
+    //   xhttp.open("GET", "/test_redirect", true);
+    //   xhttp.send();
+    //   setTimeout(function(){
+    //           myFunction();
+    //         }, 5000);
+    // }
+   
+
+
+
+  </script>
+
+
+</body>
+
+
+</html>

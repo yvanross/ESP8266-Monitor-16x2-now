@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="capteurs-iot">Capteurs <a href="https://en.wikipedia.org/wiki/Internet_of_things">IOT</a></h1>
+<p><a href="#historique">Historique</a> |  <a href="#capteur-de-vibration">Vibration</a> | <a href="#capteur-sonore">Sonore</a> | <a href="#d%C3%A9tecteur-de-fuite-de-vacuum">Fuite vacuum</a> | <a href="#module-daffichage">Module d'affichage</a> | <a href="#r%C3%A9p%C3%A9teur-r%C3%A9seau-sans-fil-pour-capteur">Répéteurs</a> | <a href="#r%C3%A9seau-cellulaire">Réseau cellulaire</a> | <a href="#prix-et-produits">Prix et produits</a></p>
+<p><img src="assets/maple-sirup.png" alt="maple sirup"></p>
+<h2 id="historique">Historique</h2>
+<p>A l'automne 2021 je rends visite à un ami qui possède une érablière d'environ 1500 entailles.  En visitant son érablière, nous discutons du processus de production du sirop d'érable ainsi que des différentes problématiques que cela impose. Le processus est complexe et le maitriser est plus un art qu'une technique.  Je constate cependant quelques points sur lesquels je peux peut-être l'aider.</p>
+<p>Durant la période des sucres, il doit fréquemment se rendre à son érablière qui est à plus de 30 minutes de sa maison pour voir le niveau de ses réservoirs d'eau d'érable pour estimer quel est le meilleur moment pour démarrer la production.  S'il n'y a pas suffisamment d'eau dans les réservoirs, cela ne vaut pas la peine de démarrer la production, car cela ne sera pas rentable.  Il fait régulièrement ce trajet et revient la plupart du temps bredouille sans avoir fait de la production et avec le stress de revenir trop tard et de perdre le précieux liquide transparent.</p>
+<p>Je lui propose alors de tenter de trouver une solution à son problème. Son érablière ayant internet, je peux lui développer un capteur de niveau de liquide qui utilisera internet pour l'avertir lorsque le bon niveau sera atteint.</p>
+<p>Quelques semaines plus tard, je retourne à son érablière et nous réalisons la première installation de deux capteurs ultrasonique relié à un moniteur ayant la capacité de communiquer par wifi et de transmettre des alarmes lors les niveaux de liquides sont atteints.  L'installation nous prend environ une journée puisque je dois faire des adaptations de dernières minutes pour traiter le bruit dans la réception des signaux des capteurs ultrasonique principalement causé par la forme des cuves d'acier inoxydable.</p>
+<p>Nous attendons la production de l'hiver 2022 pour confirmer le bon fonctionnement des capteurs.  A priori tout semble indiquer que les capteurs remplissent adéquatement leur rôle.</p>
+<p>En discutant avec d'autres producteurs acéricoles, je constate que c'est un problème généralisé et que je peux y apporter une solution.  Ayant <a href="https://www.linkedin.com/in/yvanross/">plusieurs années d'expérience</a> en développement logiciel, en électronique, en mécanique je décide d'y apporter une solution un peu plus industrielle.</p>
+<p>Pour ce faire je dois tenir compte de plusieurs facteurs:</p>
+<ul>
+<li>certains sites de production n'ont pas d'électricité en permanence;</li>
+<li>la majorité des sites n'ont pas d'accès à internet;</li>
+<li>l'installation doit se faire plus rapidement;</li>
+</ul>
+<p>Donc, les capteurs doivent pouvoir fonctionner:</p>
+<ul>
+<li>sans connexion réseau filaire;</li>
+<li>en communiquant entre eu sans réseau internet;</li>
+<li>avec une batterie ou avec électricité;</li>
+<li>et être connecté à un module permettant la connexion avec un réseau cellulaire;</li>
+</ul>
+<h2 id="capteur-de-distance-par-ultrason">Capteur de distance par ultrason</h2>
+<p>Je vous présente donc le <a href="products/ESP8266-us-100-README_fr.md">capteur de distance par ultrason</a> développé dans le cadre de ce projet.  Les prototypes de cette nouvelle version seront en test en mars 2022.
+<a href="contact_form.md">Je suis intéressé</a></p>
+<h2 id="r%C3%A9seau-cellulaire">Réseau cellulaire</h2>
+<p>J'attends de recevoir le module GSM pour connecter les capteurs aux réseaux cellulaires ce qui me permettra de répondre à la demande des entreprises n'ayant pas de réseau internet. Les premiers essais seront à réaliser d'ici la fin février 2021.<br>
+<a href="contact_form.md">Je suis intéressé</a></p>
+<h2 id="module-daffichage">Module d'affichage</h2>
+<p>Recevoir une notification par courriel ou SMS est intéressante mais quand vous êtes sur place vous aimeriez probablement consulter en temps réel l'état de vous différents capteurs et recevoir une notification visuelle ou sonore lorsqu'une alarme est générée.  Je vous propose donc un module d'affichage qui pourra remplir adéquatement cette tâche.
+<a href="contact_form.md">Je suis intéressé</a></p>
+<h2 id="capteur-de-vibration">Capteur de vibration</h2>
+<p>En continuant de discuter avec mon ami, il m'indique qu'il aimerait bien savoir quand sa pompe de vacuum fonctionne, cela lui donne un indice de la vitesse à laquelle ses bassins vont se remplir.  Un capteur de vibration permettant de détecter si un moteur fonctionne est en cours de développement et devrait être en test en mars 2022.
+<a href="contact_form.md">Je suis intéressé</a></p>
+<h2 id="capteur-sonore">Capteur sonore</h2>
+<p>Dans le cadre de notre R&amp;D, nous avons développé un capteur sonore pour détecter le fonctionnement de la pompe à vacuum.  Nous allons probablement remplacer celui-ci par le capteur de vibration qui répondra probablement encore mieux au problème.
+<a href="contact_form.md">Je suis intéressé</a></p>
+<h2 id="d%C3%A9tecteur-de-fuite-de-vacuum">Détecteur de fuite de vacuum</h2>
+<p>Parallèlement à toutes ces discussions, un autre problème d'importance affecte les acériculteurs et celui-ci concerne la perte de vacuum dans les lignes pour la récolte de l'eau d'érable.  Les fuites sont difficiles à trouver et il est pénible d'accéder à celle-ci pour en faire la réparation. L'effort physique et monétaire pour résoudre ce problème est important. Toute sorte de techniques ont été utilisées. Plus ou moins efficaces, dispendieuse, il n'y a pas de solutions idéales.</p>
+<p>Je décide donc de regarder ce que je peux y faire. Je suis encore en mode R&amp;D et j'ai quelques pistes de solution que je compte mettre à l'épreuve en mars 2022.  Je suis en train d'assembler les premiers prototypes et si tout fonctionne bien je prévois faire un essai grandeur nature avec une cinquantaine de capteurs à l'hiver 2023.
+<a href="contact_form.md">Je suis intéressé</a></p>
+<h2 id="r%C3%A9p%C3%A9teur-r%C3%A9seau-sans-fil-pour-capteur">Répéteur réseau sans fil pour capteur</h2>
+<p>Le dernier problème à résoudre concerne la distance entre les capteurs et le routeur Wifi ou le module GSM.  Les capteurs ont une capacité de communication sans fil de plus de 250 mètres.  Alors il sera parfois nécessaire d'utiliser des répéteurs. Ceux-ci sont en cours de développement. La solution logiciel est en cours de développement et sera testée après le mois de mars 2021.
+<a href="contact_form.md">Je suis intéressé</a></p>
+<h2 id="int%C3%A9r%C3%AAt-envers-un-produit-ou-une-solution">Intérêt envers un produit ou une solution</h2>
+<p>Vous aimeriez faire une précommande ou avez des questions sur un de ses produits, n'hésitez pas à nous contacter.
+<a href="contact_form.md">Je suis intéressé</a></p>
+<p>Vous seriez <a href="contact_form.md">disposé à installer des capteurs</a> à votre installation pour que nous puissions compléter notre R&amp;D.</p>
+<h2 id="fabrication-des-capteurs">Fabrication des capteurs</h2>
+<p>Nous fabriquons nous-mêmes nos capteurs pour répondre aux besoins spécifiques de chaque client. Vous avez besoin d'une fonctionnalité spécifique, d'un détecteur spécifique, nous pourrions possiblement le réaliser. Le coût le plus élevé provient de l'environnement logiciel qu'il faut développer pour les nouveaux capteurs.  Nous travaillons à développer notre logiciel pour qu'il réponde aux besoins de toute une famille de capteur. Il est fort probable que la fonctionnalité recherchée existe déjà dans notre plateforme.</p>
+<h2 id="d%C3%A9lai-de-fabrication">Délai de fabrication</h2>
+<p>Nous tentons de trouver les pièces électroniques les moins dispendieuses possibles tout en ayant une bonne qualité de produit, ce qui résulte en un délai d'approvisionnement qui peut prendre quelques mois.</p>
+<h2 id="prix-et-produits">Prix et produits</h2>
+<p>N'hésitez pas à nous contacter si vous désirez des informations sur les <a href="contact_form.md">prix et produits</a></p>
+<p><a href="https://github.com/yvanross/iot-sensor-doc/discussions">Discuter avec les membres de notre communauté</a></p>
+<p><img src="assets/yvan.jpg" width="200" height="175"><br>
+Yvan Ross Ing.
+yvan.ross+sales@gmail.com
+514-797-8894
+Richelieu, Québec
+<a href="https://www.linkedin.com/in/yvanross/">Linked-in</a></p>
+
+</body>
+</html>

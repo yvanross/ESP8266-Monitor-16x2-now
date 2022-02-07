@@ -93,7 +93,6 @@ void Router::enableRoutes() {
     }
     deviceController->writeConfig();
     
-    deviceController->startSensor();
     Serial.println("send /index.html");
     request->send(LittleFS, "/index.html");
 

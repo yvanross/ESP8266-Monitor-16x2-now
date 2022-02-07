@@ -7,9 +7,6 @@
 [submodule "lib/MessageNow"]
 	path = lib/MessageNow
 	url = git@github.com:yvanross/ESP-MessageNow.git
-[submodule "lib/WifiManager"]
-	path = lib/WifiManager
-	url = git@github.com:yvanross/ESP-WifiManager.git
 [submodule "lib/AbstractDeviceConfig"]
 	path = lib/AbstractDeviceConfig
 	url = git@github.com:yvanross/ESP-AbstractDeviceConfig.git

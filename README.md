@@ -10,3 +10,5 @@ https://coolors.co/ff8000-000000-f7edf0-3f7cac-ead94c
  git submodule add <remote_url> <destination_folder>
  git submodule update --init --recursive
  git submodule update --remote --merge// 
+
+git pull --recurse-submodules

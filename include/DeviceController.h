@@ -36,7 +36,6 @@ class DeviceController{
     void writeConfig();
     void startAccessPoint();
     void startOta();
-    void startSensor();
 
   private:
     WifiManager *wifiManager;

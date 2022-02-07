@@ -1,9 +1,15 @@
-[submodule "lib/AbstractSensorConfig"]
-	path = lib/AbstractSensorConfig
-	url = git@github.com:yvanross/ESP-AbstractSensorConfig.git
 [submodule "lib/EmailHelper"]
 	path = lib/EmailHelper
 	url = git@github.com:yvanross/ESP-EmailHelper.git
-[submodule "lib/CircularBufferOfUnsignedLong"]
-	path = lib/CircularBufferOfUnsignedLong
-	url = git@github.com:yvanross/ESP-CircularBufferOfUnsingedLong.git
+[submodule "doc"]
+	path = doc
+	url = git@github.com:yvanross/iot-sensor-doc.git
+[submodule "lib/MessageNow"]
+	path = lib/MessageNow
+	url = git@github.com:yvanross/ESP-MessageNow.git
+[submodule "lib/WifiManager"]
+	path = lib/WifiManager
+	url = git@github.com:yvanross/ESP-WifiManager.git
+[submodule "lib/AbstractDeviceConfig"]
+	path = lib/AbstractDeviceConfig
+	url = git@github.com:yvanross/ESP-AbstractDeviceConfig.git

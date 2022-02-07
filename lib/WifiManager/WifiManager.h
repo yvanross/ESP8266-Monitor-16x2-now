@@ -8,7 +8,7 @@
 #else
   #include <ESP8266WiFi.h>
 #endif
-#include <pin.h>
+// #include <pin.h>
 // #include <DeviceConfig.h>
 // #include <FlashingLed.h>
 // #include <Sensor.h>
